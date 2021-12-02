@@ -1,0 +1,13 @@
+{
+  "name": "adventcalendar2021",
+  "version": "1.0.0",
+  "description": "",
+  "main": "day1_1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "type": "module",
+  "author": "",
+  "license": "ISC"
+}
