@@ -1,4 +1,5 @@
 import { fileToArray, sumArray } from './lib/utils.mjs';
+
 const MOVEMENTS = {
   up: 'up',
   down: 'down',
