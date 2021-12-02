@@ -1,19 +1,24 @@
 import { fileToArray, sumArray } from './lib/utils.mjs';
+const MOVEMENTS = {
+  up: 'up',
+  down: 'down',
+  forward: 'forward'
+}
 
 const getDistance = movements => movements
-  .filter(item => item.startsWith('forward'))
+  .filter(item => item.startsWith(MOVEMENTS.forward))
   .map(item => Number(item.slice(8)))
   .reduce(sumArray);
 
 const getDepth = movements => {
   let depth = 0;
   movements
-    .filter(item => !item.startsWith('forward'))
+    .filter(item => !item.startsWith(MOVEMENTS.forward))
     .forEach(item => {
       const re = /(down|up)\s([0-9]+)/;
       const match = item.match(re);
       const distance = Number(match[2]);
-      match[1] === 'up' ? depth += distance : depth -= distance;
+      match[1] === MOVEMENTS.up ? depth += distance : depth -= distance;
     })
   return depth;
 }
@@ -37,13 +42,13 @@ const solution2 = () => {
     const match = movement.match(re);
     const aimMovement = Number(match[2]);
     switch(match[1]) {
-      case 'up':
+      case MOVEMENTS.up:
         aim -= aimMovement;
         break;
-      case 'down':
+      case MOVEMENTS.down:
         aim += aimMovement;
         break;
-      case 'forward':
+      case MOVEMENTS.forward:
         distance += aimMovement;
         depth += aim * aimMovement;
         break;
